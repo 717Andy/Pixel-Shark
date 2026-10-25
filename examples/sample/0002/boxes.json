@@ -1,0 +1,406 @@
+{
+  "width": 1024,
+  "height": 768,
+  "boxes": [
+    {
+      "label": "chips",
+      "x": 334.19,
+      "y": 403,
+      "width": 83.48,
+      "height": 32,
+      "attrs": {
+        "kind": "pot",
+        "amount": "150"
+      }
+    },
+    {
+      "label": "card",
+      "x": 348,
+      "y": 537.94,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "0",
+        "face": "up",
+        "card": "9h",
+        "truth": "9h",
+        "seat": "0"
+      }
+    },
+    {
+      "label": "card",
+      "x": 400,
+      "y": 537.94,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "1",
+        "face": "up",
+        "card": "2d",
+        "truth": "2d",
+        "seat": "0"
+      }
+    },
+    {
+      "label": "button",
+      "x": 435.36,
+      "y": 615.41,
+      "width": 22,
+      "height": 22,
+      "attrs": {
+        "kind": "dealer",
+        "action": "dealer",
+        "seat": "0"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 388.67,
+      "y": 650.41,
+      "width": 52.69,
+      "height": 14,
+      "attrs": {
+        "kind": "stack",
+        "amount": "10000",
+        "seat": "0"
+      }
+    },
+    {
+      "label": "card",
+      "x": 72.94,
+      "y": 422.33,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "0",
+        "face": "up",
+        "card": "Ad",
+        "truth": "Ad",
+        "seat": "1"
+      }
+    },
+    {
+      "label": "card",
+      "x": 124.94,
+      "y": 422.33,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "1",
+        "face": "up",
+        "card": "8c",
+        "truth": "8c",
+        "seat": "1"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 106,
+      "y": 497.33,
+      "width": 31.88,
+      "height": 14,
+      "attrs": {
+        "kind": "bet",
+        "amount": "50",
+        "seat": "1"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 112.92,
+      "y": 543.33,
+      "width": 45.75,
+      "height": 14,
+      "attrs": {
+        "kind": "stack",
+        "amount": "9950",
+        "seat": "1"
+      }
+    },
+    {
+      "label": "card",
+      "x": 72.94,
+      "y": 199.66,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "0",
+        "face": "up",
+        "card": "8s",
+        "truth": "8s",
+        "seat": "2"
+      }
+    },
+    {
+      "label": "card",
+      "x": 124.94,
+      "y": 199.66,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "1",
+        "face": "up",
+        "card": "5s",
+        "truth": "5s",
+        "seat": "2"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 102.53,
+      "y": 274.66,
+      "width": 38.81,
+      "height": 14,
+      "attrs": {
+        "kind": "bet",
+        "amount": "100",
+        "seat": "2"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 112.92,
+      "y": 320.66,
+      "width": 45.75,
+      "height": 14,
+      "attrs": {
+        "kind": "stack",
+        "amount": "9900",
+        "seat": "2"
+      }
+    },
+    {
+      "label": "card",
+      "x": 348,
+      "y": 92.58,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "0",
+        "face": "up",
+        "card": "2h",
+        "truth": "2h",
+        "seat": "3"
+      }
+    },
+    {
+      "label": "card",
+      "x": 400,
+      "y": 92.58,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "1",
+        "face": "up",
+        "card": "2c",
+        "truth": "2c",
+        "seat": "3"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 389.36,
+      "y": 205.05,
+      "width": 52.69,
+      "height": 14,
+      "attrs": {
+        "kind": "stack",
+        "amount": "10000",
+        "seat": "3"
+      }
+    },
+    {
+      "label": "card",
+      "x": 623.05,
+      "y": 203.92,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "0",
+        "face": "up",
+        "card": "Th",
+        "truth": "Th",
+        "seat": "4"
+      }
+    },
+    {
+      "label": "card",
+      "x": 675.05,
+      "y": 203.92,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "1",
+        "face": "up",
+        "card": "Kc",
+        "truth": "Kc",
+        "seat": "4"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 658.86,
+      "y": 316.39,
+      "width": 52.69,
+      "height": 14,
+      "attrs": {
+        "kind": "stack",
+        "amount": "10000",
+        "seat": "4"
+      }
+    },
+    {
+      "label": "card",
+      "x": 623.05,
+      "y": 426.59,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "0",
+        "face": "up",
+        "card": "As",
+        "truth": "As",
+        "seat": "5"
+      }
+    },
+    {
+      "label": "card",
+      "x": 675.05,
+      "y": 426.59,
+      "width": 46,
+      "height": 64,
+      "attrs": {
+        "where": "hole",
+        "index": "1",
+        "face": "up",
+        "card": "Qs",
+        "truth": "Qs",
+        "seat": "5"
+      }
+    },
+    {
+      "label": "chips",
+      "x": 660.59,
+      "y": 539.06,
+      "width": 52.69,
+      "height": 14,
+      "attrs": {
+        "kind": "stack",
+        "amount": "10000",
+        "seat": "5"
+      }
+    },
+    {
+      "label": "button",
+      "x": 14,
+      "y": 686,
+      "width": 88,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "fold",
+        "enabled": "true"
+      }
+    },
+    {
+      "label": "button",
+      "x": 110,
+      "y": 686,
+      "width": 97.7,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "call",
+        "enabled": "true"
+      }
+    },
+    {
+      "label": "button",
+      "x": 215.7,
+      "y": 686,
+      "width": 88,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "raise",
+        "enabled": "true",
+        "to": "200"
+      }
+    },
+    {
+      "label": "button",
+      "x": 311.7,
+      "y": 686,
+      "width": 119.48,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "raise",
+        "enabled": "true",
+        "to": "225"
+      }
+    },
+    {
+      "label": "button",
+      "x": 439.19,
+      "y": 686,
+      "width": 119.48,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "raise",
+        "enabled": "true",
+        "to": "267"
+      }
+    },
+    {
+      "label": "button",
+      "x": 566.67,
+      "y": 686,
+      "width": 90.23,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "raise",
+        "enabled": "true",
+        "to": "350"
+      }
+    },
+    {
+      "label": "button",
+      "x": 664.91,
+      "y": 686,
+      "width": 128.42,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "raise",
+        "enabled": "true",
+        "to": "10000"
+      }
+    },
+    {
+      "label": "button",
+      "x": 701.64,
+      "y": 726,
+      "width": 101.23,
+      "height": 32,
+      "attrs": {
+        "kind": "action",
+        "action": "raise",
+        "enabled": "true"
+      }
+    }
+  ]
+}

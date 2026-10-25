@@ -1,0 +1,47 @@
+[project]
+name = "pixel-shark"
+version = "0.1.0"
+description = "Screen-driven poker research stack for self-hosted and consenting games."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.27",
+    "pre-commit>=4.0",
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["packages"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "pixelshark_datagen",
+    "pixelshark_device",
+    "pixelshark_executor",
+    "pixelshark_orchestrator",
+    "pixelshark_perception",
+    "pixelshark_schema",
+    "pixelshark_sim",
+    "pixelshark_strategy",
+    "pixelshark_style",
+    "pixelshark_table",
+    "pixelshark_tracker",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["packages"]
+addopts = "-q"

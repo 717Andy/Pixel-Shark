@@ -1,0 +1,21 @@
+{
+  "id": "0001",
+  "table_id": "t-54ee0204",
+  "hand_id": "t-54ee0204-h1",
+  "street": "turn",
+  "skin": "midnight",
+  "reveal": "showdown",
+  "viewport": [
+    1440,
+    900
+  ],
+  "seed": 8,
+  "noise": {
+    "sigma": 17.05,
+    "alpha": 0.038,
+    "brightness": 1.057,
+    "color": 1.049
+  },
+  "hero_seat": 0,
+  "wait_hero": true
+}

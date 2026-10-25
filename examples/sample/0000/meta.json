@@ -1,0 +1,21 @@
+{
+  "id": "0000",
+  "table_id": "t-e9d82289",
+  "hand_id": "t-e9d82289-h1",
+  "street": "flop",
+  "skin": "felt",
+  "reveal": "all",
+  "viewport": [
+    1280,
+    720
+  ],
+  "seed": 7,
+  "noise": {
+    "sigma": 26.955,
+    "alpha": 0.064,
+    "brightness": 1.021,
+    "color": 0.94
+  },
+  "hero_seat": null,
+  "wait_hero": false
+}

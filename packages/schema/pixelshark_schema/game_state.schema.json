@@ -1,0 +1,616 @@
+{
+  "$defs": {
+    "ActorObs": {
+      "description": "Seat index of the player to act, or null when nobody is acting.",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "title": "ActorObs",
+      "type": "object"
+    },
+    "BoolObs": {
+      "properties": {
+        "value": {
+          "title": "Value",
+          "type": "boolean"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "BoolObs",
+      "type": "object"
+    },
+    "CardObs": {
+      "description": "One card. ``value`` is null when the observer did not read it.",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Card code such as As, Td, 9h, 2c. Null if unknown.",
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "title": "CardObs",
+      "type": "object"
+    },
+    "IntObs": {
+      "description": "An integer the observer claims to have read.",
+      "properties": {
+        "value": {
+          "title": "Value",
+          "type": "integer"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "IntObs",
+      "type": "object"
+    },
+    "LegalAction": {
+      "description": "An action the current actor is allowed to take.\n\nFor ``call``, ``amount`` is the extra chips required (0 is not used; a free\nresponse is ``check``). For ``bet`` and ``raise``, ``min_to`` and ``max_to``\nbound the street total and ``sizing`` lists concrete buttons inside that range.",
+      "properties": {
+        "kind": {
+          "enum": [
+            "fold",
+            "check",
+            "call",
+            "bet",
+            "raise"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IntObs"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "min_to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IntObs"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "max_to": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IntObs"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "sizing": {
+          "items": {
+            "$ref": "#/$defs/SizingOption"
+          },
+          "title": "Sizing",
+          "type": "array"
+        },
+        "is_all_in": {
+          "default": false,
+          "title": "Is All In",
+          "type": "boolean"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "LegalAction",
+      "type": "object"
+    },
+    "OptIntObs": {
+      "description": "An integer that may be unknown. ``value: null`` means \"not applicable\".",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "title": "OptIntObs",
+      "type": "object"
+    },
+    "PhaseObs": {
+      "properties": {
+        "value": {
+          "enum": [
+            "betting",
+            "complete"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "PhaseObs",
+      "type": "object"
+    },
+    "PositionObs": {
+      "description": "Position name, or null when the seat is sitting out.",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "enum": [
+                "BTN",
+                "SB",
+                "BB",
+                "UTG",
+                "UTG+1",
+                "MP",
+                "LJ",
+                "HJ",
+                "CO"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "title": "PositionObs",
+      "type": "object"
+    },
+    "PotState": {
+      "description": "One collected pot. Side pots are separate entries.",
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/IntObs"
+        },
+        "eligible_seats": {
+          "description": "Seats entitled to win this pot, in ascending seat order.",
+          "items": {
+            "type": "integer"
+          },
+          "title": "Eligible Seats",
+          "type": "array"
+        }
+      },
+      "required": [
+        "amount",
+        "eligible_seats"
+      ],
+      "title": "PotState",
+      "type": "object"
+    },
+    "SeatState": {
+      "properties": {
+        "seat": {
+          "maximum": 8,
+          "minimum": 0,
+          "title": "Seat",
+          "type": "integer"
+        },
+        "name": {
+          "$ref": "#/$defs/StrObs"
+        },
+        "position": {
+          "$ref": "#/$defs/PositionObs"
+        },
+        "stack": {
+          "$ref": "#/$defs/IntObs",
+          "description": "Chips behind, not counting the current bet."
+        },
+        "bet": {
+          "$ref": "#/$defs/IntObs",
+          "description": "Chips committed in front of the seat this street."
+        },
+        "hole_cards": {
+          "description": "Private cards. Ground truth always includes the real codes. hole_cards_shown says whether the table is drawing the faces.",
+          "items": {
+            "$ref": "#/$defs/CardObs"
+          },
+          "title": "Hole Cards",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/StatusObs"
+        },
+        "is_button": {
+          "$ref": "#/$defs/BoolObs"
+        },
+        "is_actor": {
+          "$ref": "#/$defs/BoolObs"
+        },
+        "hole_cards_shown": {
+          "$ref": "#/$defs/BoolObs"
+        },
+        "payoff": {
+          "$ref": "#/$defs/OptIntObs",
+          "description": "Net chips for this hand. Null until the hand is complete."
+        }
+      },
+      "required": [
+        "seat",
+        "name",
+        "position",
+        "stack",
+        "bet",
+        "hole_cards",
+        "status",
+        "is_button",
+        "is_actor",
+        "hole_cards_shown",
+        "payoff"
+      ],
+      "title": "SeatState",
+      "type": "object"
+    },
+    "SizingOption": {
+      "description": "One suggested bet size. ``to_amount`` is the street total, not the increment.",
+      "properties": {
+        "label": {
+          "enum": [
+            "min",
+            "1/3 pot",
+            "1/2 pot",
+            "2/3 pot",
+            "pot",
+            "all-in"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "to_amount": {
+          "$ref": "#/$defs/IntObs"
+        }
+      },
+      "required": [
+        "label",
+        "to_amount"
+      ],
+      "title": "SizingOption",
+      "type": "object"
+    },
+    "StatusObs": {
+      "properties": {
+        "value": {
+          "enum": [
+            "active",
+            "folded",
+            "all_in",
+            "sitting_out"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "StatusObs",
+      "type": "object"
+    },
+    "StrObs": {
+      "properties": {
+        "value": {
+          "title": "Value",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "StrObs",
+      "type": "object"
+    },
+    "StreetObs": {
+      "properties": {
+        "value": {
+          "enum": [
+            "preflop",
+            "flop",
+            "turn",
+            "river"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "StreetObs",
+      "type": "object"
+    },
+    "TimerState": {
+      "description": "Shot clock for the current actor. Remaining is null when nobody is acting.",
+      "properties": {
+        "shot_clock_ms": {
+          "$ref": "#/$defs/IntObs"
+        },
+        "remaining_ms": {
+          "$ref": "#/$defs/OptIntObs"
+        },
+        "deadline_unix_ms": {
+          "$ref": "#/$defs/OptIntObs"
+        }
+      },
+      "required": [
+        "shot_clock_ms",
+        "remaining_ms",
+        "deadline_unix_ms"
+      ],
+      "title": "TimerState",
+      "type": "object"
+    }
+  },
+  "description": "One labeled moment. This is the document the table emits and models will emit.\n\nConfiguration fields (``hero_seat``, ``reveal``, ``autoplay``, ``last_action``)\ndescribe the research table. They are not things a vision model is expected\nto read off the felt. Observation fields carry their own confidence.",
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "default": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source": {
+      "default": "ground_truth",
+      "enum": [
+        "ground_truth",
+        "perception",
+        "tracker"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "table_id": {
+      "title": "Table Id",
+      "type": "string"
+    },
+    "hand_id": {
+      "title": "Hand Id",
+      "type": "string"
+    },
+    "hand_number": {
+      "$ref": "#/$defs/IntObs"
+    },
+    "variant": {
+      "const": "NLHE",
+      "default": "NLHE",
+      "title": "Variant",
+      "type": "string"
+    },
+    "small_blind": {
+      "$ref": "#/$defs/IntObs"
+    },
+    "big_blind": {
+      "$ref": "#/$defs/IntObs"
+    },
+    "ante": {
+      "$ref": "#/$defs/IntObs"
+    },
+    "button_seat": {
+      "$ref": "#/$defs/IntObs"
+    },
+    "street": {
+      "$ref": "#/$defs/StreetObs"
+    },
+    "hand_phase": {
+      "$ref": "#/$defs/PhaseObs"
+    },
+    "board": {
+      "items": {
+        "$ref": "#/$defs/CardObs"
+      },
+      "title": "Board",
+      "type": "array"
+    },
+    "pots": {
+      "items": {
+        "$ref": "#/$defs/PotState"
+      },
+      "title": "Pots",
+      "type": "array"
+    },
+    "total_pot": {
+      "$ref": "#/$defs/IntObs",
+      "description": "All chips in the middle plus outstanding bets, before the hand is awarded."
+    },
+    "seats": {
+      "items": {
+        "$ref": "#/$defs/SeatState"
+      },
+      "title": "Seats",
+      "type": "array"
+    },
+    "actor_seat": {
+      "$ref": "#/$defs/ActorObs"
+    },
+    "legal_actions": {
+      "items": {
+        "$ref": "#/$defs/LegalAction"
+      },
+      "title": "Legal Actions",
+      "type": "array"
+    },
+    "timers": {
+      "$ref": "#/$defs/TimerState"
+    },
+    "hero_seat": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Seat a human is playing. Null when every seat is a bot.",
+      "title": "Hero Seat"
+    },
+    "reveal": {
+      "default": "showdown",
+      "enum": [
+        "all",
+        "hero",
+        "showdown"
+      ],
+      "title": "Reveal",
+      "type": "string"
+    },
+    "autoplay": {
+      "default": false,
+      "title": "Autoplay",
+      "type": "boolean"
+    },
+    "last_action": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Action"
+    }
+  },
+  "required": [
+    "table_id",
+    "hand_id",
+    "hand_number",
+    "small_blind",
+    "big_blind",
+    "ante",
+    "button_seat",
+    "street",
+    "hand_phase",
+    "board",
+    "pots",
+    "total_pot",
+    "seats",
+    "actor_seat",
+    "legal_actions",
+    "timers"
+  ],
+  "title": "GameState",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pixelshark:game-state:1.0.0"
+}

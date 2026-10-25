@@ -1,0 +1,21 @@
+{
+  "id": "0003",
+  "table_id": "t-c800ebf3",
+  "hand_id": "t-c800ebf3-h5",
+  "street": "river",
+  "skin": "midnight",
+  "reveal": "hero",
+  "viewport": [
+    390,
+    844
+  ],
+  "seed": 10,
+  "noise": {
+    "sigma": 15.365,
+    "alpha": 0.042,
+    "brightness": 1.078,
+    "color": 1.023
+  },
+  "hero_seat": null,
+  "wait_hero": false
+}

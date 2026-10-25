@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="felt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pixel Shark Table</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body data-ready="false">
+    <header class="top">
+      <div class="brand">
+        <span class="mark">PS</span>
+        <div>
+          <strong>Pixel Shark</strong>
+          <small>Self-hosted no-limit hold'em</small>
+        </div>
+      </div>
+      <p id="status" class="status">Connecting…</p>
+      <div class="controls">
+        <label>Skin
+          <select id="skin">
+            <option value="felt">Felt</option>
+            <option value="midnight">Midnight</option>
+            <option value="broadcast">Broadcast</option>
+          </select>
+        </label>
+        <label>Cards
+          <select id="reveal">
+            <option value="showdown">Show at showdown</option>
+            <option value="hero">Hero only</option>
+            <option value="all">Show all</option>
+          </select>
+        </label>
+        <button type="button" id="play" class="ghost">Play seat 1</button>
+        <button type="button" id="autoplay" class="ghost">Pause bots</button>
+      </div>
+    </header>
+    <main class="layout">
+      <section class="table-wrap" id="table">
+        <div class="felt" id="felt">
+          <div class="board" id="board"></div>
+          <div class="pot-wrap" id="pot"></div>
+        </div>
+        <div id="seats"></div>
+      </section>
+      <aside class="log-panel">
+        <h2>Hand log</h2>
+        <ol id="log"></ol>
+      </aside>
+    </main>
+    <section class="action-bar" id="actions" aria-label="Actions"></section>
+    <p id="error" class="error" hidden></p>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
