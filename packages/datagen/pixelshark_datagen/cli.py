@@ -30,6 +30,11 @@ def main(argv: list[str] | None = None) -> None:
         help="Use a table server that is already running. The default is to start one.",
     )
     generate.add_argument("--seats", type=int, default=6)
+    generate.add_argument(
+        "--include-holdout",
+        action="store_true",
+        help="Also write one frame in the linen skin, which eval treats as held out.",
+    )
     args = parser.parse_args(argv)
     if args.command == "generate":
         path = generate_dataset(
@@ -38,8 +43,10 @@ def main(argv: list[str] | None = None) -> None:
             seed=args.seed,
             base_url=args.base_url,
             seats=args.seats,
+            include_holdout=args.include_holdout,
         )
-        print(f"wrote {args.count} samples to {path}")
+        written = args.count + (1 if args.include_holdout else 0)
+        print(f"wrote {written} samples to {path}")
 
 
 if __name__ == "__main__":

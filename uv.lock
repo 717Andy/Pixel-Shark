@@ -462,10 +462,14 @@ version = "0.1.0"
 source = { editable = "packages/perception" }
 dependencies = [
     { name = "pixelshark-schema" },
+    { name = "pixelshark-sim" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "pixelshark-schema", editable = "packages/schema" }]
+requires-dist = [
+    { name = "pixelshark-schema", editable = "packages/schema" },
+    { name = "pixelshark-sim", editable = "packages/sim" },
+]
 
 [[package]]
 name = "pixelshark-schema"

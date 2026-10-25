@@ -33,7 +33,7 @@ function rankText(code) {
 }
 
 function setSkin(name) {
-  const skin = ["felt", "midnight", "broadcast"].includes(name) ? name : "felt";
+  const skin = ["felt", "midnight", "broadcast", "linen"].includes(name) ? name : "felt";
   document.documentElement.dataset.skin = skin;
   $("skin").value = skin;
   localStorage.setItem("pixelshark-skin", skin);

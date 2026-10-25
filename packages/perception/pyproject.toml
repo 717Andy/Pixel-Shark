@@ -1,12 +1,19 @@
 [project]
 name = "pixelshark-perception"
 version = "0.1.0"
-description = "Perception interface. Phase 0 has no model; a VLM reader comes later."
+description = "Read a screenshot into the game-state schema."
 requires-python = ">=3.11"
-dependencies = ["pixelshark-schema"]
+dependencies = [
+    "pixelshark-schema",
+    "pixelshark-sim",
+]
+
+[project.scripts]
+pixelshark-perceive = "pixelshark_perception.cli:main"
 
 [tool.uv.sources]
 pixelshark-schema = { workspace = true }
+pixelshark-sim = { workspace = true }
 
 [build-system]
 requires = ["hatchling"]
