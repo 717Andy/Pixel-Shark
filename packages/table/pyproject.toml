@@ -1,0 +1,30 @@
+[project]
+name = "pixelshark-table"
+version = "0.1.0"
+description = "Self-hosted no-limit hold'em table: HTTP, WebSocket, and browser UI."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "pixelshark-schema",
+    "pixelshark-sim",
+    "uvicorn>=0.32",
+]
+
+[tool.uv.sources]
+pixelshark-schema = { workspace = true }
+pixelshark-sim = { workspace = true }
+
+[project.scripts]
+pixelshark-table = "pixelshark_table.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pixelshark_table"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"pixelshark_table/static/index.html" = "pixelshark_table/static/index.html"
+"pixelshark_table/static/styles.css" = "pixelshark_table/static/styles.css"
+"pixelshark_table/static/app.js" = "pixelshark_table/static/app.js"

@@ -1,0 +1,30 @@
+# Pixel Shark phase 0. `docker compose up` serves the self-hosted table.
+#
+# PokerTH is not in this file. A current dedicated server (2.1.10+) is not
+# available as a small image; the distro package is an older protocol. See
+# docs/pokerth.md before adding a service.
+
+services:
+  table:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      PIXELSHARK_HOST: "0.0.0.0"
+      PIXELSHARK_AUTOPLAY: "1"
+      PIXELSHARK_SEATS: "6"
+      PIXELSHARK_SB: "50"
+      PIXELSHARK_BB: "100"
+      PIXELSHARK_STACK: "10000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 8s

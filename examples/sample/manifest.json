@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "generator": "pixelshark-datagen",
+  "seed": 7,
+  "count": 4,
+  "samples": [
+    {
+      "id": "0000",
+      "table_id": "t-e9d82289",
+      "hand_id": "t-e9d82289-h1",
+      "street": "flop",
+      "skin": "felt",
+      "reveal": "all",
+      "viewport": [
+        1280,
+        720
+      ],
+      "seed": 7,
+      "noise": {
+        "sigma": 26.955,
+        "alpha": 0.064,
+        "brightness": 1.021,
+        "color": 0.94
+      },
+      "hero_seat": null,
+      "wait_hero": false
+    },
+    {
+      "id": "0001",
+      "table_id": "t-54ee0204",
+      "hand_id": "t-54ee0204-h1",
+      "street": "turn",
+      "skin": "midnight",
+      "reveal": "showdown",
+      "viewport": [
+        1440,
+        900
+      ],
+      "seed": 8,
+      "noise": {
+        "sigma": 17.05,
+        "alpha": 0.038,
+        "brightness": 1.057,
+        "color": 1.049
+      },
+      "hero_seat": 0,
+      "wait_hero": true
+    },
+    {
+      "id": "0002",
+      "table_id": "t-f077d82d",
+      "hand_id": "t-f077d82d-h1",
+      "street": "preflop",
+      "skin": "broadcast",
+      "reveal": "all",
+      "viewport": [
+        1024,
+        768
+      ],
+      "seed": 9,
+      "noise": {
+        "sigma": 27.042,
+        "alpha": 0.06,
+        "brightness": 1.038,
+        "color": 0.896
+      },
+      "hero_seat": 0,
+      "wait_hero": true
+    },
+    {
+      "id": "0003",
+      "table_id": "t-c800ebf3",
+      "hand_id": "t-c800ebf3-h5",
+      "street": "river",
+      "skin": "midnight",
+      "reveal": "hero",
+      "viewport": [
+        390,
+        844
+      ],
+      "seed": 10,
+      "noise": {
+        "sigma": 15.365,
+        "alpha": 0.042,
+        "brightness": 1.078,
+        "color": 1.023
+      },
+      "hero_seat": null,
+      "wait_hero": false
+    }
+  ]
+}

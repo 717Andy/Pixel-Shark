@@ -1,0 +1,445 @@
+{
+  "schema_version": "1.0.0",
+  "source": "ground_truth",
+  "table_id": "t-f077d82d",
+  "hand_id": "t-f077d82d-h1",
+  "hand_number": {
+    "value": 1,
+    "confidence": 1.0
+  },
+  "variant": "NLHE",
+  "small_blind": {
+    "value": 50,
+    "confidence": 1.0
+  },
+  "big_blind": {
+    "value": 100,
+    "confidence": 1.0
+  },
+  "ante": {
+    "value": 0,
+    "confidence": 1.0
+  },
+  "button_seat": {
+    "value": 0,
+    "confidence": 1.0
+  },
+  "street": {
+    "value": "preflop",
+    "confidence": 1.0
+  },
+  "hand_phase": {
+    "value": "betting",
+    "confidence": 1.0
+  },
+  "board": [],
+  "pots": [
+    {
+      "amount": {
+        "value": 150,
+        "confidence": 1.0
+      },
+      "eligible_seats": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "total_pot": {
+    "value": 150,
+    "confidence": 1.0
+  },
+  "seats": [
+    {
+      "seat": 0,
+      "name": {
+        "value": "You",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": "BTN",
+        "confidence": 1.0
+      },
+      "stack": {
+        "value": 10000,
+        "confidence": 1.0
+      },
+      "bet": {
+        "value": 0,
+        "confidence": 1.0
+      },
+      "hole_cards": [
+        {
+          "value": "9h",
+          "confidence": 1.0
+        },
+        {
+          "value": "2d",
+          "confidence": 1.0
+        }
+      ],
+      "status": {
+        "value": "active",
+        "confidence": 1.0
+      },
+      "is_button": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "is_actor": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "hole_cards_shown": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "payoff": {
+        "value": null,
+        "confidence": 1.0
+      }
+    },
+    {
+      "seat": 1,
+      "name": {
+        "value": "Bot 2",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": "SB",
+        "confidence": 1.0
+      },
+      "stack": {
+        "value": 9950,
+        "confidence": 1.0
+      },
+      "bet": {
+        "value": 50,
+        "confidence": 1.0
+      },
+      "hole_cards": [
+        {
+          "value": "Ad",
+          "confidence": 1.0
+        },
+        {
+          "value": "8c",
+          "confidence": 1.0
+        }
+      ],
+      "status": {
+        "value": "active",
+        "confidence": 1.0
+      },
+      "is_button": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "is_actor": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "hole_cards_shown": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "payoff": {
+        "value": null,
+        "confidence": 1.0
+      }
+    },
+    {
+      "seat": 2,
+      "name": {
+        "value": "Bot 3",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": "BB",
+        "confidence": 1.0
+      },
+      "stack": {
+        "value": 9900,
+        "confidence": 1.0
+      },
+      "bet": {
+        "value": 100,
+        "confidence": 1.0
+      },
+      "hole_cards": [
+        {
+          "value": "8s",
+          "confidence": 1.0
+        },
+        {
+          "value": "5s",
+          "confidence": 1.0
+        }
+      ],
+      "status": {
+        "value": "active",
+        "confidence": 1.0
+      },
+      "is_button": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "is_actor": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "hole_cards_shown": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "payoff": {
+        "value": null,
+        "confidence": 1.0
+      }
+    },
+    {
+      "seat": 3,
+      "name": {
+        "value": "Bot 4",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": "UTG",
+        "confidence": 1.0
+      },
+      "stack": {
+        "value": 10000,
+        "confidence": 1.0
+      },
+      "bet": {
+        "value": 0,
+        "confidence": 1.0
+      },
+      "hole_cards": [
+        {
+          "value": "2h",
+          "confidence": 1.0
+        },
+        {
+          "value": "2c",
+          "confidence": 1.0
+        }
+      ],
+      "status": {
+        "value": "folded",
+        "confidence": 1.0
+      },
+      "is_button": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "is_actor": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "hole_cards_shown": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "payoff": {
+        "value": null,
+        "confidence": 1.0
+      }
+    },
+    {
+      "seat": 4,
+      "name": {
+        "value": "Bot 5",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": "HJ",
+        "confidence": 1.0
+      },
+      "stack": {
+        "value": 10000,
+        "confidence": 1.0
+      },
+      "bet": {
+        "value": 0,
+        "confidence": 1.0
+      },
+      "hole_cards": [
+        {
+          "value": "Th",
+          "confidence": 1.0
+        },
+        {
+          "value": "Kc",
+          "confidence": 1.0
+        }
+      ],
+      "status": {
+        "value": "folded",
+        "confidence": 1.0
+      },
+      "is_button": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "is_actor": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "hole_cards_shown": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "payoff": {
+        "value": null,
+        "confidence": 1.0
+      }
+    },
+    {
+      "seat": 5,
+      "name": {
+        "value": "Bot 6",
+        "confidence": 1.0
+      },
+      "position": {
+        "value": "CO",
+        "confidence": 1.0
+      },
+      "stack": {
+        "value": 10000,
+        "confidence": 1.0
+      },
+      "bet": {
+        "value": 0,
+        "confidence": 1.0
+      },
+      "hole_cards": [
+        {
+          "value": "As",
+          "confidence": 1.0
+        },
+        {
+          "value": "Qs",
+          "confidence": 1.0
+        }
+      ],
+      "status": {
+        "value": "folded",
+        "confidence": 1.0
+      },
+      "is_button": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "is_actor": {
+        "value": false,
+        "confidence": 1.0
+      },
+      "hole_cards_shown": {
+        "value": true,
+        "confidence": 1.0
+      },
+      "payoff": {
+        "value": null,
+        "confidence": 1.0
+      }
+    }
+  ],
+  "actor_seat": {
+    "value": 0,
+    "confidence": 1.0
+  },
+  "legal_actions": [
+    {
+      "kind": "fold",
+      "amount": null,
+      "min_to": null,
+      "max_to": null,
+      "sizing": [],
+      "is_all_in": false,
+      "confidence": 1.0
+    },
+    {
+      "kind": "call",
+      "amount": {
+        "value": 100,
+        "confidence": 1.0
+      },
+      "min_to": null,
+      "max_to": null,
+      "sizing": [],
+      "is_all_in": false,
+      "confidence": 1.0
+    },
+    {
+      "kind": "raise",
+      "amount": null,
+      "min_to": {
+        "value": 200,
+        "confidence": 1.0
+      },
+      "max_to": {
+        "value": 10000,
+        "confidence": 1.0
+      },
+      "sizing": [
+        {
+          "label": "min",
+          "to_amount": {
+            "value": 200,
+            "confidence": 1.0
+          }
+        },
+        {
+          "label": "1/2 pot",
+          "to_amount": {
+            "value": 225,
+            "confidence": 1.0
+          }
+        },
+        {
+          "label": "2/3 pot",
+          "to_amount": {
+            "value": 267,
+            "confidence": 1.0
+          }
+        },
+        {
+          "label": "pot",
+          "to_amount": {
+            "value": 350,
+            "confidence": 1.0
+          }
+        },
+        {
+          "label": "all-in",
+          "to_amount": {
+            "value": 10000,
+            "confidence": 1.0
+          }
+        }
+      ],
+      "is_all_in": false,
+      "confidence": 1.0
+    }
+  ],
+  "timers": {
+    "shot_clock_ms": {
+      "value": 20000,
+      "confidence": 1.0
+    },
+    "remaining_ms": {
+      "value": 19809,
+      "confidence": 1.0
+    },
+    "deadline_unix_ms": {
+      "value": 1792937682416,
+      "confidence": 1.0
+    }
+  },
+  "hero_seat": 0,
+  "reveal": "all",
+  "autoplay": false,
+  "last_action": "Bot 6 folds"
+}
