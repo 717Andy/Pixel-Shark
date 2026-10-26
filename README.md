@@ -5,10 +5,12 @@ the table the way a person does — a screenshot — and acts with the mouse or 
 tap. The idea is in the same family as a "digital" robot that uses a computer
 by seeing the screen, not by calling a private poker API.
 
-Phase 0 is the foundation. There is no model yet. What you can run today is a
-self-hosted no-limit hold'em table, a written-down description of a game
-state, and a tool that saves screenshots of that table together with the true
-state of the hand.
+Phase 0 is the foundation: a self-hosted no-limit hold'em table, a written-down
+description of a game state, and a tool that saves screenshots of that table
+together with the true state of the hand. Perception can now read a screenshot
+into that same description. The tests use a stand-in, so nothing here downloads
+a model. How to run a real one on your own GPU is in
+[docs/perception.md](docs/perception.md).
 
 ## Where this is allowed to play
 
@@ -37,12 +39,12 @@ simulator are the parts that actually play cards.
 | `packages/table` | HTTP + WebSocket API and the browser UI, with three skins. |
 | `packages/datagen` | Headless screenshots, bounding boxes, and ground truth. |
 | `packages/device` | Desktop clicks and screenshots through Playwright. Android (ADB/scrcpy) and iOS are named and not implemented. |
-| `packages/perception` | Will read a frame into the schema. Today it only accepts ground truth. A vision-language model is the planned first reader; smaller detectors can replace it later. |
+| `packages/perception` | Reads a frame into the schema. A vision-language model is the reader. CI uses a mock. A fast per-skin detector is only a stub. |
 | `packages/tracker` | Will keep a stable belief across frames. Today it passes one observation through. |
 | `packages/strategy` | Will be OpenSpiel / CFR. Today it calls the scripted bot. |
 | `packages/style` | Will turn a chosen action into timing and small human-looking adjustments. Today it only attaches a delay. |
 | `packages/executor` | Finds the on-screen button for an action from bounding boxes and returns the click point. |
-| `packages/orchestrator` | One cycle: read, track, choose, style, locate. No model calls. |
+| `packages/orchestrator` | One cycle: read, track, choose, style, locate. It still uses ground truth unless you pass it a perception reader. |
 
 ```text
 screenshot  ->  perception  ->  tracker  ->  strategy  ->  style  ->  executor  ->  click
@@ -180,8 +182,24 @@ uv run pixelshark-datagen generate -n 4 -o examples/sample --seed 7
 
 The command starts its own table server, deals to a chosen street, screenshots
 that street, and shuts the server down. Pass `--base-url http://127.0.0.1:8000`
-to use a server you already started. Skins in the planned sample set are
-`felt`, `midnight`, and `broadcast`.
+to use a server you already started. Skins in the default rotation are
+`felt`, `midnight`, and `broadcast`. `--include-holdout` adds one extra frame
+in `linen`, a light skin the perception eval scores separately. The table UI
+has that skin too: it is the fourth entry in the skin menu.
+
+## Reading a screenshot
+
+`pixelshark-perceive` turns a frame into the same game-state document the table
+emits, with a confidence on each field. It does not click. The short version,
+including how to score `examples/sample` with no GPU and how to point it at a
+Qwen-VL model on an NVIDIA laptop, is [docs/perception.md](docs/perception.md).
+
+```bash
+uv run pixelshark-perceive eval --data examples/sample --backend oracle --out reports/perception
+```
+
+`oracle` repeats the saved ground truth so you can see a perfect report. It is
+not a vision model.
 
 ## Tests and lint
 
@@ -209,7 +227,12 @@ Qt 6 compile on every cold start. Details and the next build step are in
 
 ## What this phase does not do
 
-- No vision model, no CFR, no OpenSpiel agent, no Android or iOS device control.
+- The vision reader is wired up, but this repository does not download weights
+  and CI never calls a model. There is no CFR or OpenSpiel agent yet, and no
+  Android or iOS device control.
+- The live watch loop prints a state when it thinks it is your turn. It does
+  not choose or click an action.
+- Per-skin detector training is a stub. The read log is the input it will use.
 - No login, no accounts, no hardening. It is a research server. Keep it on
   localhost unless you know who can reach the port.
 - Bots rebuy to the starting stack between hands so a table does not die when

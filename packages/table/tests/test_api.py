@@ -27,9 +27,11 @@ def test_health_schema_and_homepage():
         assert page.status_code == 200
         assert "Pixel Shark" in page.text
         assert "midnight" in page.text
+        assert "linen" in page.text
         css = client.get("/static/styles.css")
         assert css.status_code == 200
         assert 'data-skin="broadcast"' in css.text or "broadcast" in css.text
+        assert 'data-skin="linen"' in css.text
         session = client.get("/api/session").json()
         assert session["table_id"] == "home"
         state = session["state"]

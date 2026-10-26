@@ -1,12 +1,42 @@
-"""Read a table from pixels.
+"""Read a table from a screenshot.
 
-Phase 0 does not call a model. :class:`GroundTruthReader` stands in for one by
-returning a state the table already produced, so the rest of the loop can be
-tested. :class:`VlmReader` is the planned first real reader: a vision-language
-model that fills this same schema. Distilled detectors can replace it later
-behind the same ``read`` method.
+:class:`VlmReader` sends a frame to a pluggable backend and returns a
+schema-valid :class:`~pixelshark_schema.GameState` with a confidence on each
+field. :class:`GroundTruthReader` still returns a state you already have, which
+is what the orchestrator uses when it is not calling a model.
+
+CI uses :class:`~pixelshark_perception.backends.MockBackend`. A Qwen-VL model
+on a local NVIDIA GPU and a hosted chat API are selected with environment
+variables. See ``docs/perception.md``.
 """
 
-from pixelshark_perception.reader import GroundTruthReader, TableReader, VlmReader
+from pixelshark_perception.backends import (
+    MockBackend,
+    OpenAICompatibleBackend,
+    OracleBackend,
+    TransformersQwenBackend,
+    VlmBackend,
+    backend_from_env,
+)
+from pixelshark_perception.consistency import ConsistencyIssue, check_consistency
+from pixelshark_perception.detector import PerSkinDetector, PerSkinDetectorTrainer
+from pixelshark_perception.errors import PerceptionError
+from pixelshark_perception.reader import GroundTruthReader, PerceptionResult, TableReader, VlmReader
 
-__all__ = ["GroundTruthReader", "TableReader", "VlmReader"]
+__all__ = [
+    "ConsistencyIssue",
+    "GroundTruthReader",
+    "MockBackend",
+    "OpenAICompatibleBackend",
+    "OracleBackend",
+    "PerceptionError",
+    "PerceptionResult",
+    "PerSkinDetector",
+    "PerSkinDetectorTrainer",
+    "TableReader",
+    "TransformersQwenBackend",
+    "VlmBackend",
+    "VlmReader",
+    "backend_from_env",
+    "check_consistency",
+]

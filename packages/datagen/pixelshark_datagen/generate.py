@@ -47,6 +47,11 @@ _BOX_JS = """
 }
 """
 
+# Linen is a light skin kept out of the default rotation. Perception eval
+# scores it separately to see whether a reader generalizes past the three
+# skins in examples/sample.
+HOLDOUT_SKIN = "linen"
+
 # A small fixed roster so `examples/sample` covers the skins, a phone-sized
 # viewport, face-up cards, and a frame where the hero is the one to act.
 _PLANS: tuple[dict[str, Any], ...] = (
@@ -88,6 +93,27 @@ _PLANS: tuple[dict[str, Any], ...] = (
     },
 )
 
+_HOLDOUT_PLAN: dict[str, Any] = {
+    "skin": HOLDOUT_SKIN,
+    "width": 1280,
+    "height": 800,
+    "reveal": "all",
+    "street": "turn",
+    "hero": 0,
+    "wait_hero": True,
+}
+
+
+def plans_for(*, count: int, include_holdout: bool = False) -> list[dict[str, Any]]:
+    """The capture plan for each sample. Holdout adds one linen frame at the end."""
+
+    if count < 1:
+        raise ValueError("count must be at least 1")
+    sequence = [_PLANS[index % len(_PLANS)] for index in range(count)]
+    if include_holdout:
+        sequence.append(_HOLDOUT_PLAN)
+    return sequence
+
 
 def generate_dataset(
     *,
@@ -96,11 +122,15 @@ def generate_dataset(
     seed: int = 7,
     base_url: str | None = None,
     seats: int = 6,
+    include_holdout: bool = False,
 ) -> Path:
-    """Write ``count`` samples under ``out`` and return that directory."""
+    """Write ``count`` samples under ``out`` and return that directory.
 
-    if count < 1:
-        raise ValueError("count must be at least 1")
+    ``include_holdout`` appends one extra frame in the linen skin after those
+    samples. The default rotation is unchanged.
+    """
+
+    sequence = plans_for(count=count, include_holdout=include_holdout)
     out.mkdir(parents=True, exist_ok=True)
     own_server = base_url is None
     server: subprocess.Popen[str] | None = None
@@ -116,8 +146,7 @@ def generate_dataset(
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()
             try:
-                for index in range(count):
-                    plan = _PLANS[index % len(_PLANS)]
+                for index, plan in enumerate(sequence):
                     sample_id = f"{index:04d}"
                     meta = _capture_one(
                         browser=browser,
@@ -143,7 +172,7 @@ def generate_dataset(
         "schema_version": "1.0.0",
         "generator": "pixelshark-datagen",
         "seed": seed,
-        "count": count,
+        "count": len(sequence),
         "samples": samples,
     }
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
